@@ -24,9 +24,9 @@ Think about which debugging methods you found most useful and how you might appl
 // Description:
 // This program is intended to display a simple prompt in the console but fails to run.
 
-console.log("Welcome to the bootcamp
+console.log("Welcome to the bootcamp");
 
-// What’s Wrong?
+// What’s Wrong:The string is not properly closed with a quotation mark, and the closing parenthesis is missing.
 
 
 // Program B
@@ -35,11 +35,15 @@ console.log("Welcome to the bootcamp
 
 let numbers = [2, 4, "eight"];
 for (let i = 0; i < numbers.length; i++) {
-  let doubled = numbers[i] * 2;
-  console.log(doubled);
+  if (typeof numbers[i] === "number") {
+    let doubled = numbers[i] * 2;
+    console.log(doubled);
+  } else {
+    console.log(`Skipping invalid entry: ${numbers[i]}`);
+  }
 }
 
-// What’s Wrong?
+// What’s Wrong:"eight" is a string, so multiplying it by 2 results in NaN (Not a Number), which may not be the expected behavior
 
 
 
@@ -51,12 +55,12 @@ function isPrime(num) {
   if (num < 2) return false;
   for (let i = 2; i < num; i++) {
     if (num % i === 0) {
-      return true;  // Supposed to indicate num is NOT prime
+      return false;  // Not prime
     }
   }
-  return false; // Supposed to indicate num IS prime
+  return true; // Prime
 }
 
-console.log(isPrime(7)); // Expected true but gets false
+console.log(isPrime(7)); // Expected true
 
-// What’s Wrong?
+// What’s Wrong:The true and false return values are flipped from what they should be.
